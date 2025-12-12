@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <title>VisionGuard – SecureID AI</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app-shell">
+
+    <!-- الشريط العلوي -->
+    <header class="top-bar">
+        <div class="logo-area">
+            <div class="logo-circle">VG</div>
+            <div>
+                <div class="logo-title">VisionGuard – SecureID AI</div>
+                <div class="logo-sub">Adaptive Login Risk Engine</div>
+            </div>
+        </div>
+        <div class="left-pill">HACKATHON DEMO</div>
+    </header>
+
+    <!-- اللوحتين -->
+    <main class="layout">
+
+        <!-- لوحة إدخال البيانات (يمين) -->
+        <section class="card card-input">
+            <h2>🔐 محاكاة تسجيل الدخول</h2>
+            <p class="card-desc">
+                نموذج دخول لخدمة حكومية (مثل أبشر)، ويتم تقييم المحاولة بواسطة محرك VisionGuard.
+            </p>
+
+            <label>رقم الهوية / الإقامة</label>
+            <input id="nationalId" placeholder="1234567890" />
+
+            <label>كلمة المرور</label>
+            <input id="password" type="password" placeholder="••••••••" />
+
+            <h3 class="section-title">📡 إشارات الأمان</h3>
+
+            <label>موقع تسجيل الدخول</label>
+            <select id="location">
+                <option value="same">نفس المنطقة المعتادة</option>
+                <option value="different">منطقة مختلفة</option>
+            </select>
+
+            <label>نوع الجهاز</label>
+            <select id="device">
+                <option value="known">جهاز معروف</option>
+                <option value="new">جهاز جديد</option>
+            </select>
+
+            <label>سمعة عنوان الـ IP</label>
+            <select id="ip">
+                <option value="good">Good</option>
+                <option value="suspicious">Suspicious</option>
+                <option value="bad">Bad</option>
+            </select>
+
+            <label>عدد المحاولات الفاشلة</label>
+            <input id="fails" type="number" min="0" max="5" value="0" />
+
+            <label>ساعة محاولة الدخول</label>
+            <input id="hour" type="number" min="0" max="23" value="16" />
+
+            <button id="analyzeBtn">تحليل محاولة الدخول</button>
+        </section>
+
+        <!-- لوحة النتيجة (يسار) -->
+        <section class="card card-result">
+            <h2>📊 نتيجة القرار الأمني</h2>
+            <p class="card-desc">
+                النظام يحاكي منطق البايثون مع تصنيف SAFE / SUSPICIOUS / HIGH RISK
+                مع التحقق الحيوي عبر نفاذ في الحالات المتوسطة.
+            </p>
+
+            <div class="risk-header">
+                <div>
+                    <div class="risk-label">مستوى الخطورة</div>
+                    <div id="riskScore" class="risk-score">– %</div>
+                </div>
+                <div id="riskLevelPill" class="risk-pill">No data</div>
+            </div>
+
+            <div class="decision-block">
+                <div class="decision-label">القرار الأمني</div>
+                <div id="decisionText" class="decision-text">
+                    لم يتم التحليل بعد.
+                </div>
+            </div>
+
+            <div class="reason-block">
+                <div class="reason-title">أسباب القرار</div>
+                <ul id="reasonsList" class="reason-list">
+                    <li>اضغط على زر "تحليل محاولة الدخول" لعرض التفاصيل.</li>
+                </ul>
+            </div>
+
+            <div class="user-summary">
+                <div class="user-summary-title">ملخص محاولة الدخول</div>
+                <pre id="summaryBox">لا يوجد بيانات بعد.</pre>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        VisionGuard • SecureID AI • Python Backend + Front-end (HTML/CSS/JS)
+    </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
